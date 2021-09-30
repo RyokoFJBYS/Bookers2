@@ -1,6 +1,7 @@
+<%= render 'books/list', book: @book %>
+
 <h2>Books</h2>
 
-<% @books.each do |book| %>
 <table>
   <thead>
     <tr>
@@ -10,6 +11,7 @@
       <th></th>
     </tr>
   </thead>
+  <% @books.each do |book| %>
   <tbody>
     <%= attachment_image_tag book, :profile_image %>
     <tr>
@@ -18,5 +20,5 @@
       <td><%= book.body %></td>
     </tr>
   </tbody>
+  <% end %>
 </table>
-<% end %>
