@@ -1,4 +1,23 @@
-
+<h2>User info</h2>
+<%= attachment_image_tag user, :profile_image, :fill, 100, 100,fallback: "no_image.jpg" %>
+<table>
+    <tbody>
+        <tr></tr>
+        <tr>
+            <th>name</th>
+            <th><%= user.name %></th>
+        </tr>
+        <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+        </tr>
+    </tbody>
+</table>
+<% if user.id == current_user.id %>
+ <div>
+	<%= link_to "マーク", edit_user_path(user) %>
+</div>
+<% end %>
 
 <h2>New book</h2>
 <%= form_with model: book, local:true do |f| %>
