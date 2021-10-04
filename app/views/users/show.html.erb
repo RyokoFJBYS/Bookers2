@@ -1,21 +1,29 @@
-<%= render 'books/list', book: @book, user: @user %>
+<div class = "container px-5">
+  <%= render 'books/list', book: @book, user: @user %>
+  <div class ="row">
+    <div class = "col-md-8">
+    <h2>Books</h2>
+    
+    <table class = "table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @books.each do |book| %>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40,fallback: "no_image.jpg" %></td>
+          <td><%= link_to book.title, book_path(book.id) %></td>
+          <td><%= book.body %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    </div>
+  </div>
+</div>
 
-<h2>Books</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40,fallback: "no_image.jpg" %></td>
-      <td><%= link_to @book.title, book_path(@book.id) %></td>
-      <td><%= @book.body %></td>
-    </tr>
-  </tbody>
-</table>
